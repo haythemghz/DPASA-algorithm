@@ -1,0 +1,573 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{longtable}
+\geometry{margin=1in}
+
+\title{CEC Benchmark Suites: Definitions and Baseline Results}
+\author{Reference Document for Algorithm Comparison}
+\date{}
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{CEC2017 Benchmark Suite}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Official Reference}
+
+\begin{quote}
+N.~H.~Awad, M.~Z.~Ali, J.~J.~Liang, B.~Y.~Qu, and P.~N.~Suganthan, 
+``Problem Definitions and Evaluation Criteria for the CEC 2017 Special Session and Competition on Single Objective Real-Parameter Numerical Optimization,'' 
+Technical Report, Nanyang Technological University, Singapore, 2016.
+\end{quote}
+
+\noindent\textbf{BibTeX:}
+\begin{verbatim}
+@techreport{awad2016cec2017,
+  author    = {Awad, N. H. and Ali, M. Z. and Liang, J. J. 
+               and Qu, B. Y. and Suganthan, P. N.},
+  title     = {Problem Definitions and Evaluation Criteria for the 
+               {CEC} 2017 Special Session and Competition on Single 
+               Objective Real-Parameter Numerical Optimization},
+  institution = {Nanyang Technological University},
+  year      = {2016},
+  address   = {Singapore}
+}
+\end{verbatim}
+
+\subsection{Function Definitions}
+
+The CEC2017 benchmark suite contains \textbf{30 test functions} categorized into four groups. 
+All functions are shifted and rotated versions of basic mathematical test functions.
+
+\begin{itemize}
+    \item \textbf{Search Range:} $[-100, 100]^D$ for all functions
+    \item \textbf{Standard Dimensions:} $D \in \{10, 30, 50, 100\}$
+    \item \textbf{Recommended Runs:} 51 independent runs per function
+    \item \textbf{Max Function Evaluations:} $10{,}000 \times D$
+\end{itemize}
+
+\begin{table}[htbp]
+\centering
+\caption{CEC2017 Benchmark Functions~\cite{awad2016cec2017}}
+\label{tab:cec2017functions}
+\begin{tabular}{@{}clcc@{}}
+\toprule
+\textbf{ID} & \textbf{Function Name} & \textbf{Type} & $f^*$ \\
+\midrule
+\multicolumn{4}{l}{\textit{Unimodal Functions}} \\
+F1 & Shifted and Rotated Bent Cigar & Unimodal & 100 \\
+F2 & (Deprecated in later versions) & -- & 200 \\
+F3 & Shifted and Rotated Zakharov & Unimodal & 300 \\
+\midrule
+\multicolumn{4}{l}{\textit{Simple Multimodal Functions}} \\
+F4 & Shifted and Rotated Rosenbrock's & Multimodal & 400 \\
+F5 & Shifted and Rotated Rastrigin's & Multimodal & 500 \\
+F6 & Shifted and Rotated Expanded Scaffer's F6 & Multimodal & 600 \\
+F7 & Shifted and Rotated Lunacek Bi-Rastrigin & Multimodal & 700 \\
+F8 & Shifted and Rotated Non-Cont. Rastrigin's & Multimodal & 800 \\
+F9 & Shifted and Rotated Levy & Multimodal & 900 \\
+F10 & Shifted and Rotated Schwefel's & Multimodal & 1000 \\
+\midrule
+\multicolumn{4}{l}{\textit{Hybrid Functions (N = number of basic functions)}} \\
+F11 & Hybrid Function 1 ($N=3$) & Hybrid & 1100 \\
+F12 & Hybrid Function 2 ($N=3$) & Hybrid & 1200 \\
+F13 & Hybrid Function 3 ($N=3$) & Hybrid & 1300 \\
+F14 & Hybrid Function 4 ($N=4$) & Hybrid & 1400 \\
+F15 & Hybrid Function 5 ($N=4$) & Hybrid & 1500 \\
+F16 & Hybrid Function 6 ($N=4$) & Hybrid & 1600 \\
+F17 & Hybrid Function 7 ($N=5$) & Hybrid & 1700 \\
+F18 & Hybrid Function 8 ($N=5$) & Hybrid & 1800 \\
+F19 & Hybrid Function 9 ($N=5$) & Hybrid & 1900 \\
+F20 & Hybrid Function 10 ($N=6$) & Hybrid & 2000 \\
+\midrule
+\multicolumn{4}{l}{\textit{Composition Functions}} \\
+F21 & Composition Function 1 ($N=3$) & Composition & 2100 \\
+F22 & Composition Function 2 ($N=3$) & Composition & 2200 \\
+F23 & Composition Function 3 ($N=4$) & Composition & 2300 \\
+F24 & Composition Function 4 ($N=4$) & Composition & 2400 \\
+F25 & Composition Function 5 ($N=5$) & Composition & 2500 \\
+F26 & Composition Function 6 ($N=5$) & Composition & 2600 \\
+F27 & Composition Function 7 ($N=6$) & Composition & 2700 \\
+F28 & Composition Function 8 ($N=6$) & Composition & 2800 \\
+F29 & Composition Function 9 ($N=3$) & Composition & 2900 \\
+F30 & Composition Function 10 ($N=3$) & Composition & 3000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Baseline Algorithm Results on CEC2017 ($D=30$)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The following results are from Mousavirad et al.~\cite{mousavirad2021clude} who compared 
+standard DE against their Clu-DE algorithm on CEC2017 with $D=30$, 25 runs, and 
+$\text{MaxFES} = 3000 \times D$.
+
+\begin{table}[htbp]
+\centering
+\caption{DE Results on CEC2017 ($D=30$)~\cite{mousavirad2021clude}}
+\label{tab:de_cec2017_d30}
+\small
+\begin{tabular}{@{}ccc@{}}
+\toprule
+\textbf{Function} & \textbf{Mean} & \textbf{Std. Dev.} \\
+\midrule
+F1  & 8.68E+03 & 1.47E+04 \\
+F2  & 3.86E+19 & 1.93E+20 \\
+F3  & 9.43E+03 & 8.94E+03 \\
+F4  & 4.35E+02 & 2.08E+01 \\
+F5  & 6.85E+02 & 9.19E+00 \\
+F6  & 6.00E+02 & 1.60E-04 \\
+F7  & 9.12E+02 & 1.71E+01 \\
+F8  & 9.89E+02 & 1.21E+01 \\
+F9  & 9.00E+02 & 4.94E-01 \\
+F10 & 8.76E+03 & 3.83E+02 \\
+F11 & 1.13E+03 & 2.07E+01 \\
+F12 & 2.55E+05 & 3.62E+05 \\
+F13 & 1.82E+04 & 2.15E+04 \\
+F14 & 1.47E+03 & 6.76E+00 \\
+F15 & 1.61E+03 & 8.88E+01 \\
+F16 & 3.09E+03 & 2.67E+02 \\
+F17 & 2.17E+03 & 2.01E+02 \\
+F18 & 1.09E+04 & 8.97E+03 \\
+F19 & 1.92E+03 & 5.71E+00 \\
+F20 & 2.32E+03 & 2.28E+02 \\
+F21 & 2.48E+03 & 7.34E+00 \\
+F22 & 9.99E+03 & 3.09E+02 \\
+F23 & 2.83E+03 & 1.09E+01 \\
+F24 & 3.01E+03 & 9.53E+00 \\
+F25 & 2.88E+03 & 1.16E+00 \\
+F26 & 5.26E+03 & 2.03E+02 \\
+F27 & 3.20E+03 & 1.32E-04 \\
+F28 & 3.30E+03 & 1.75E-04 \\
+F29 & 3.83E+03 & 2.48E+02 \\
+F30 & 3.22E+03 & 8.07E+00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{DE Results on CEC2017 ($D=50$)~\cite{mousavirad2021clude}}
+\label{tab:de_cec2017_d50}
+\small
+\begin{tabular}{@{}ccc@{}}
+\toprule
+\textbf{Function} & \textbf{Mean} & \textbf{Std. Dev.} \\
+\midrule
+F1  & 5.07E+03 & 4.66E+03 \\
+F2  & 1.02E+39 & 4.84E+39 \\
+F3  & 2.41E+05 & 5.65E+04 \\
+F4  & 4.49E+02 & 2.42E+01 \\
+F5  & 8.61E+02 & 2.04E+01 \\
+F6  & 6.00E+02 & 7.71E-02 \\
+F7  & 1.12E+03 & 1.63E+01 \\
+F8  & 1.15E+03 & 6.57E+01 \\
+F9  & 9.09E+02 & 1.04E+01 \\
+F10 & 1.54E+04 & 3.99E+02 \\
+F11 & 1.20E+03 & 6.55E+01 \\
+F12 & 1.96E+06 & 1.47E+06 \\
+F13 & 1.13E+04 & 1.39E+04 \\
+F14 & 7.39E+03 & 1.20E+04 \\
+F15 & 3.24E+04 & 4.17E+04 \\
+F16 & 4.69E+03 & 5.37E+02 \\
+F17 & 3.34E+03 & 3.78E+02 \\
+F18 & 1.09E+05 & 6.76E+04 \\
+F19 & 1.00E+04 & 1.39E+04 \\
+F20 & 3.47E+03 & 3.53E+02 \\
+F21 & 2.66E+03 & 1.70E+01 \\
+F22 & 1.67E+04 & 3.92E+02 \\
+F23 & 3.07E+03 & 3.71E+01 \\
+F24 & 3.28E+03 & 1.60E+01 \\
+F25 & 2.94E+03 & 2.32E+01 \\
+F26 & 7.35E+03 & 4.57E+02 \\
+F27 & 3.20E+03 & 1.30E-04 \\
+F28 & 3.30E+03 & 1.67E-04 \\
+F29 & 5.04E+03 & 3.66E+02 \\
+F30 & 7.09E+03 & 4.81E+03 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{DE Results on CEC2017 ($D=100$)~\cite{mousavirad2021clude}}
+\label{tab:de_cec2017_d100}
+\small
+\begin{tabular}{@{}ccc@{}}
+\toprule
+\textbf{Function} & \textbf{Mean} & \textbf{Std. Dev.} \\
+\midrule
+F1  & 9.77E+03 & 1.21E+04 \\
+F2  & 7.36E+92 & 3.68E+93 \\
+F3  & 1.58E+06 & 3.59E+05 \\
+F4  & 5.94E+02 & 5.55E+01 \\
+F5  & 1.21E+03 & 3.11E+02 \\
+F6  & 6.01E+02 & 4.44E-01 \\
+F7  & 1.74E+03 & 4.17E+01 \\
+F8  & 1.51E+03 & 3.02E+02 \\
+F9  & 1.91E+03 & 1.49E+03 \\
+F10 & 3.28E+04 & 5.47E+02 \\
+F11 & 3.50E+03 & 1.22E+03 \\
+F12 & 6.72E+06 & 4.00E+06 \\
+F13 & 7.94E+03 & 9.64E+03 \\
+F14 & 4.64E+05 & 3.51E+05 \\
+F15 & 6.26E+03 & 6.46E+03 \\
+F16 & 1.01E+04 & 3.67E+02 \\
+F17 & 7.00E+03 & 7.39E+02 \\
+F18 & 9.74E+05 & 4.26E+05 \\
+F19 & 3.88E+03 & 3.09E+03 \\
+F20 & 7.07E+03 & 7.01E+02 \\
+F21 & 3.08E+03 & 2.74E+02 \\
+F22 & 3.46E+04 & 5.29E+02 \\
+F23 & 3.05E+03 & 3.71E+01 \\
+F24 & 4.07E+03 & 2.76E+02 \\
+F25 & 3.26E+03 & -- \\
+F26 & -- & -- \\
+F27 & -- & -- \\
+F28 & -- & -- \\
+F29 & -- & -- \\
+F30 & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Key Baseline Algorithms and References}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{jSO (CEC2017 Competition Winner)}
+
+\begin{quote}
+J.~Brest, M.~S.~Mau\v{c}ec, and B.~Bo\v{s}kovi\'{c}, 
+``Single Objective Real-Parameter Optimization: Algorithm jSO,'' 
+in \textit{Proc.~IEEE Congress on Evolutionary Computation (CEC)}, 
+San Sebasti\'{a}n, Spain, pp.~1311--1318, 2017.
+\end{quote}
+
+\noindent\textbf{BibTeX:}
+\begin{verbatim}
+@inproceedings{brest2017jso,
+  author    = {Brest, Janez and Mau{\v{c}}ec, Mirjam Sepesy 
+               and Bo{\v{s}}kovi{\'c}, Borko},
+  title     = {Single Objective Real-Parameter Optimization: 
+               Algorithm {jSO}},
+  booktitle = {Proc. IEEE Congress on Evolutionary Computation (CEC)},
+  year      = {2017},
+  pages     = {1311--1318},
+  address   = {San Sebasti{\'a}n, Spain},
+  doi       = {10.1109/CEC.2017.7969456}
+}
+\end{verbatim}
+
+\noindent\textbf{Key Features:}
+\begin{itemize}
+    \item Winner of CEC2017 competition
+    \item Based on L-SHADE with weighted mutation strategy
+    \item Initial population size: $NP_{\text{init}} = 25 \sqrt{D} \log D$
+    \item Historical memory size: $H = 5$
+    \item Weighted mutation factor $F_w$ varies based on progress
+\end{itemize}
+
+\subsection{L-SHADE}
+
+\begin{quote}
+R.~Tanabe and A.~S.~Fukunaga, 
+``Improving the Search Performance of SHADE Using Linear Population Size Reduction,'' 
+in \textit{Proc.~IEEE Congress on Evolutionary Computation (CEC)}, 
+Beijing, China, pp.~1658--1665, 2014.
+\end{quote}
+
+\noindent\textbf{BibTeX:}
+\begin{verbatim}
+@inproceedings{tanabe2014lshade,
+  author    = {Tanabe, Ryoji and Fukunaga, Alex S.},
+  title     = {Improving the Search Performance of {SHADE} Using 
+               Linear Population Size Reduction},
+  booktitle = {Proc. IEEE Congress on Evolutionary Computation (CEC)},
+  year      = {2014},
+  pages     = {1658--1665},
+  address   = {Beijing, China},
+  doi       = {10.1109/CEC.2014.6900380}
+}
+\end{verbatim}
+
+\noindent\textbf{Key Features:}
+\begin{itemize}
+    \item Winner of CEC2014 competition
+    \item Linear population size reduction (LPSR)
+    \item $NP_{\text{init}} = 18D$, $NP_{\text{final}} = 4$
+    \item Historical memory size: $H = 6$
+\end{itemize}
+
+\subsection{SHADE}
+
+\begin{quote}
+R.~Tanabe and A.~Fukunaga, 
+``Success-History Based Parameter Adaptation for Differential Evolution,'' 
+in \textit{Proc.~IEEE Congress on Evolutionary Computation (CEC)}, 
+Canc\'{u}n, Mexico, pp.~71--78, 2013.
+\end{quote}
+
+\noindent\textbf{BibTeX:}
+\begin{verbatim}
+@inproceedings{tanabe2013shade,
+  author    = {Tanabe, Ryoji and Fukunaga, Alex},
+  title     = {Success-History Based Parameter Adaptation for 
+               Differential Evolution},
+  booktitle = {Proc. IEEE Congress on Evolutionary Computation (CEC)},
+  year      = {2013},
+  pages     = {71--78},
+  address   = {Canc{\'u}n, Mexico},
+  doi       = {10.1109/CEC.2013.6557555}
+}
+\end{verbatim}
+
+\noindent\textbf{Key Features:}
+\begin{itemize}
+    \item 3rd place in CEC2013 competition
+    \item Historical memory for $F$ and $CR$ adaptation
+    \item Current-to-pbest/1 mutation with external archive
+    \item Population size: $NP = 100$, Memory size: $H = 10$
+\end{itemize}
+
+\subsection{CMA-ES}
+
+\begin{quote}
+N.~Hansen and A.~Ostermeier, 
+``Completely Derandomized Self-Adaptation in Evolution Strategies,'' 
+\textit{Evolutionary Computation}, vol.~9, no.~2, pp.~159--195, 2001.
+\end{quote}
+
+\noindent\textbf{BibTeX:}
+\begin{verbatim}
+@article{hansen2001cmaes,
+  author    = {Hansen, Nikolaus and Ostermeier, Andreas},
+  title     = {Completely Derandomized Self-Adaptation in 
+               Evolution Strategies},
+  journal   = {Evolutionary Computation},
+  volume    = {9},
+  number    = {2},
+  pages     = {159--195},
+  year      = {2001},
+  doi       = {10.1162/106365601750190398}
+}
+\end{verbatim}
+
+\subsection{Standard DE}
+
+\begin{quote}
+R.~Storn and K.~Price, 
+``Differential Evolution -- A Simple and Efficient Heuristic for Global Optimization over Continuous Spaces,'' 
+\textit{Journal of Global Optimization}, vol.~11, no.~4, pp.~341--359, 1997.
+\end{quote}
+
+\noindent\textbf{BibTeX:}
+\begin{verbatim}
+@article{storn1997de,
+  author    = {Storn, Rainer and Price, Kenneth},
+  title     = {Differential Evolution -- A Simple and Efficient 
+               Heuristic for Global Optimization over Continuous Spaces},
+  journal   = {Journal of Global Optimization},
+  volume    = {11},
+  number    = {4},
+  pages     = {341--359},
+  year      = {1997},
+  doi       = {10.1023/A:1008202821328}
+}
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{CEC2020 Benchmark Suite}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Official Reference}
+
+\begin{quote}
+C.~T.~Yue, K.~V.~Price, P.~N.~Suganthan, J.~J.~Liang, M.~Z.~Ali, B.~Y.~Qu, N.~H.~Awad, and P.~P.~Biswas,
+``Problem Definitions and Evaluation Criteria for the CEC 2020 Special Session and Competition on Single Objective Bound Constrained Numerical Optimization,''
+Technical Report, Nanyang Technological University, Singapore, 2019.
+\end{quote}
+
+\noindent\textbf{BibTeX:}
+\begin{verbatim}
+@techreport{yue2019cec2020,
+  author    = {Yue, C. T. and Price, K. V. and Suganthan, P. N. 
+               and Liang, J. J. and Ali, M. Z. and Qu, B. Y. 
+               and Awad, N. H. and Biswas, P. P.},
+  title     = {Problem Definitions and Evaluation Criteria for the 
+               {CEC} 2020 Special Session and Competition on Single 
+               Objective Bound Constrained Numerical Optimization},
+  institution = {Nanyang Technological University},
+  year      = {2019},
+  address   = {Singapore}
+}
+\end{verbatim}
+
+\subsection{Function Definitions}
+
+CEC2020 uses a \textbf{subset of 10 functions} from CEC2017 for a more focused evaluation.
+
+\begin{itemize}
+    \item \textbf{Search Range:} $[-100, 100]^D$
+    \item \textbf{Standard Dimensions:} $D \in \{5, 10, 15, 20\}$
+    \item \textbf{Recommended Runs:} 30 independent runs
+    \item \textbf{Max Function Evaluations:} Varies by dimension
+\end{itemize}
+
+\begin{table}[htbp]
+\centering
+\caption{CEC2020 Benchmark Functions}
+\label{tab:cec2020functions}
+\begin{tabular}{@{}clcc@{}}
+\toprule
+\textbf{ID} & \textbf{Function Name} & \textbf{Type} & $f^*$ \\
+\midrule
+F1 & Shifted and Rotated Bent Cigar & Unimodal & 100 \\
+F2 & Shifted and Rotated Schwefel's & Multimodal & 1100 \\
+F3 & Shifted and Rotated Lunacek Bi-Rastrigin & Multimodal & 700 \\
+F4 & Shifted and Rotated Rosenbrock's & Multimodal & 1900 \\
+F5 & Hybrid Function 1 ($N=3$) & Hybrid & 1700 \\
+F6 & Hybrid Function 2 ($N=4$) & Hybrid & 1600 \\
+F7 & Hybrid Function 3 ($N=5$) & Hybrid & 2100 \\
+F8 & Composition Function 1 ($N=3$) & Composition & 2200 \\
+F9 & Composition Function 2 ($N=4$) & Composition & 2400 \\
+F10 & Composition Function 3 ($N=5$) & Composition & 2500 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Competition Rankings History}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}[htbp]
+\centering
+\caption{CEC Competition Winners (Single Objective Optimization)}
+\label{tab:winners}
+\begin{tabular}{@{}cll@{}}
+\toprule
+\textbf{Year} & \textbf{Winner Algorithm} & \textbf{Reference} \\
+\midrule
+2013 & NBIPOP-aCMA-ES & Loshchilov~\cite{loshchilov2013cmaes} \\
+2014 & L-SHADE & Tanabe \& Fukunaga~\cite{tanabe2014lshade} \\
+2015 & SPS-L-SHADE-EIG & Guo et al.~\cite{guo2015spslshade} \\
+2016 & LSHADE-EpSin & Awad et al.~\cite{awad2016lshadeepsin} \\
+2017 & jSO & Brest et al.~\cite{brest2017jso} \\
+2018 & DISH-XX & Viktorin et al.~\cite{viktorin2018dish} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Experimental Protocol Recommendations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+For your paper to meet Q1 journal standards, follow these experimental protocols:
+
+\subsection{Standard CEC2017 Protocol}
+\begin{enumerate}
+    \item \textbf{Dimensions:} Test on $D = 10, 30, 50, 100$
+    \item \textbf{Runs:} 51 independent runs per function (minimum 25 for Q2)
+    \item \textbf{Budget:} $\text{MaxFES} = 10{,}000 \times D$
+    \item \textbf{Metrics:} Report Mean Error ($f(x) - f^*$) and Std. Dev.
+    \item \textbf{Statistics:} Friedman test with Nemenyi post-hoc, Wilcoxon signed-rank
+\end{enumerate}
+
+\subsection{Required Comparisons}
+For a competitive paper, compare against at least:
+\begin{itemize}
+    \item jSO (CEC2017 winner)
+    \item L-SHADE (CEC2014 winner)
+    \item SHADE (baseline adaptive DE)
+    \item CMA-ES (evolution strategy baseline)
+    \item Standard DE/rand/1/bin
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Code and Data Repositories}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Official implementations and data are available from:
+
+\begin{itemize}
+    \item \textbf{P. N. Suganthan's GitHub:} \url{https://github.com/P-N-Suganthan}
+    \item \textbf{CEC Benchmarking Page:} \url{https://www3.ntu.edu.sg/home/epnsugan/index_files/cec-benchmarking.htm}
+    \item \textbf{MATLAB Implementations:} Available in the above repositories
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thebibliography}{99}
+
+\bibitem{awad2016cec2017}
+N.~H.~Awad, M.~Z.~Ali, J.~J.~Liang, B.~Y.~Qu, and P.~N.~Suganthan,
+``Problem Definitions and Evaluation Criteria for the CEC 2017 Special Session and Competition on Single Objective Real-Parameter Numerical Optimization,''
+Technical Report, Nanyang Technological University, Singapore, 2016.
+
+\bibitem{mousavirad2021clude}
+S.~J.~Mousavirad, G.~Schaefer, I.~Korovin, M.~H.~Moghadam, M.~Saadatmand, and M.~Pedram,
+``An Enhanced Differential Evolution Algorithm Using a Novel Clustering-based Mutation Operator,''
+arXiv:2109.09351, 2021.
+
+\bibitem{brest2017jso}
+J.~Brest, M.~S.~Mau{\v{c}}ec, and B.~Bo{\v{s}}kovi{\'c},
+``Single Objective Real-Parameter Optimization: Algorithm jSO,''
+in \textit{Proc.~IEEE CEC}, pp.~1311--1318, 2017.
+
+\bibitem{tanabe2014lshade}
+R.~Tanabe and A.~S.~Fukunaga,
+``Improving the Search Performance of SHADE Using Linear Population Size Reduction,''
+in \textit{Proc.~IEEE CEC}, pp.~1658--1665, 2014.
+
+\bibitem{tanabe2013shade}
+R.~Tanabe and A.~Fukunaga,
+``Success-History Based Parameter Adaptation for Differential Evolution,''
+in \textit{Proc.~IEEE CEC}, pp.~71--78, 2013.
+
+\bibitem{hansen2001cmaes}
+N.~Hansen and A.~Ostermeier,
+``Completely Derandomized Self-Adaptation in Evolution Strategies,''
+\textit{Evolutionary Computation}, vol.~9, no.~2, pp.~159--195, 2001.
+
+\bibitem{storn1997de}
+R.~Storn and K.~Price,
+``Differential Evolution -- A Simple and Efficient Heuristic for Global Optimization over Continuous Spaces,''
+\textit{Journal of Global Optimization}, vol.~11, no.~4, pp.~341--359, 1997.
+
+\bibitem{yue2019cec2020}
+C.~T.~Yue et al.,
+``Problem Definitions and Evaluation Criteria for the CEC 2020 Special Session and Competition on Single Objective Bound Constrained Numerical Optimization,''
+Technical Report, NTU Singapore, 2019.
+
+\bibitem{loshchilov2013cmaes}
+I.~Loshchilov,
+``CMA-ES with Restarts for Solving CEC 2013 Benchmark Problems,''
+in \textit{Proc.~IEEE CEC}, 2013.
+
+\bibitem{guo2015spslshade}
+S.~M.~Guo, C.~C.~Yang, P.~H.~Hsu, and J.~S.~H.~Tsai,
+``Improving Differential Evolution with a Successful-Parent-Selecting Framework,''
+\textit{IEEE Trans. Evolutionary Computation}, vol.~19, no.~5, pp.~717--730, 2015.
+
+\bibitem{awad2016lshadeepsin}
+N.~H.~Awad, M.~Z.~Ali, and P.~N.~Suganthan,
+``Ensemble Sinusoidal Differential Covariance Matrix Adaptation with Euclidean Neighborhood for Solving CEC2017 Benchmark Problems,''
+in \textit{Proc.~IEEE CEC}, 2017.
+
+\bibitem{viktorin2018dish}
+A.~Viktorin, R.~Senkerik, M.~Pluhacek, T.~Kadavy, and A.~Zamuda,
+``Distance Based Parameter Adaptation for Success-History based Differential Evolution,''
+\textit{Swarm and Evolutionary Computation}, vol.~50, 100462, 2019.
+
+\end{thebibliography}
+
+\end{document}

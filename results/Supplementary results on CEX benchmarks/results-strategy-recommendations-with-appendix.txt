@@ -1,0 +1,179 @@
+================================================================================
+RESULTS SECTION INTEGRATION STRATEGY - RECOMMENDATIONS
+================================================================================
+
+RECOMMENDED APPROACH: Hybrid Integration
+-----------------------------------------
+Use CEC2017 as pSDMary benchmark, retain 15 classical functions as validation.
+This satisfies reviewer expectations while preserving your existing work.
+
+
+--------------------------------------------------------------------------------
+STRUCTURE OVERVIEW
+--------------------------------------------------------------------------------
+
+MAIN PAPER:
+  Section 4.1 - CEC2017 Benchmark (PSDMary)          ~2.0 pages
+  Section 4.2 - Classical Functions (Summary only)   ~0.3 pages
+  Section 4.3 - Ablation Study                       ~0.5 pages
+  Section 4.4 - Scalability Analysis                 ~0.3 pages
+  
+APPENDIX/SUPPLEMENTARY:
+  Full mean/std tables for CEC2017                   ~1.5 pages
+  Full mean/std tables for 15 classical functions    ~1.0 pages
+
+TOTAL: ~3 pages main + 2.5 pages appendix
+
+
+--------------------------------------------------------------------------------
+CEC2017 SECTION (PSDMARY) - WHAT TO INCLUDE
+--------------------------------------------------------------------------------
+
+1. AGGREGATED CATEGORY TABLE (not 30 individual rows)
+   - Group by: Unimodal (F1-F3), Multimodal (F4-F10), Hybrid (F11-F20), Composition (F21-F30)
+   - Show: Average rank per category for each algorithm
+   - Benefit: 4 rows instead of 30, much more readable
+
+2. STATISTICAL SUMMARY TABLE
+   - Friedman ranks with p-value
+   - Win/Tie/Loss counts vs each baseline
+   - Effect sizes (Cohen's d) for key comparisons
+
+3. CRITICAL DIFFERENCE DIAGRAM
+   - Single figure showing Nemenyi post-hoc results
+   - Visual proof of statistical significance
+   - Replaces verbose pairwise comparison tables
+
+4. CONVERGENCE PLOTS (SELECT 4 REPRESENTATIVE FUNCTIONS)
+   - One unimodal (F1 or F3)
+   - One multimodal where SDM excels (F5 or F9)
+   - One hybrid (F15 or F18)
+   - One composition (F25 or F28)
+   - Do NOT include all 30 - wastes space
+
+5. DIMENSIONS TO TEST
+   - D=30 (standard, required)
+   - D=50 (shows scalability)
+   - D=100 (optional, for strong scalability claims)
+
+
+--------------------------------------------------------------------------------
+CLASSICAL FUNCTIONS SECTION (VALIDATION) - WHAT TO INCLUDE
+--------------------------------------------------------------------------------
+
+1. SINGLE SUMMARY TABLE ONLY
+   - Friedman ranks for all algorithms
+   - Overall win/tie/loss record
+   - Reference to appendix for full details
+
+2. ONE PARAGRAPH OF TEXT
+   - State that SDM maintains competitive performance on classical benchmarks
+   - Highlight consistency with CEC2017 findings
+   - Note any interesting differences (if any)
+
+3. MOVE TO APPENDIX
+   - All detailed mean/std tables
+   - Individual function analysis
+   - Pairwise statistical comparisons
+
+
+--------------------------------------------------------------------------------
+EXPESDMENTAL SETUP REQUIREMENTS
+--------------------------------------------------------------------------------
+
+FOR CEC2017:
+  - Dimensions: D=30, D=50 (minimum), D=100 (optional)
+  - Runs: 30 minimum, 51 recommended
+  - Max FES: 10000 * D
+  - Functions: All 30 (F1-F30), excluding F2 (deprecated in some versions)
+  - Baselines: jSO, L-SHADE, SHADE, CMA-ES, DE, PSO (minimum 5)
+
+FOR 15 CLASSICAL (if re-running):
+  - Increase runs from 3 to 25-30
+  - Keep D=10 as pSDMary, add D=30
+
+
+--------------------------------------------------------------------------------
+SPACE-SAVING TECHNIQUES
+--------------------------------------------------------------------------------
+
+1. USE AGGREGATED TABLES
+   - Group functions by category
+   - Show ranks instead of raw values in main text
+
+2. CRITICAL DIFFERENCE DIAGRAMS
+   - One figure replaces entire pairwise comparison table
+   - Use Demsar's CD diagram format
+
+3. SELECTIVE CONVERGENCE PLOTS
+   - Maximum 4-6 functions
+   - Use subfigures (2x2 or 2x3 grid)
+
+4. APPENDIX FOR RAW DATA
+   - Full mean/std tables
+   - All 30/15 function details
+   - Extended statistical analysis
+
+5. SUPPLEMENTARY MATERIAL (if journal allows)
+   - Additional convergence plots
+   - Parameter sensitivity analysis
+   - Extended ablation results
+
+
+--------------------------------------------------------------------------------
+WHAT TO AVOID
+--------------------------------------------------------------------------------
+
+- Do NOT include 30 rows of mean/std in main paper
+- Do NOT show convergence plots for all functions
+- Do NOT duplicate statistical analysis for both benchmarks in detail
+- Do NOT use full pairwise comparison tables (use CD diagrams instead)
+- Do NOT keep the 15-function results as pSDMary (CEC is expected by reviewers)
+
+
+--------------------------------------------------------------------------------
+IMPLEMENTATION PRIORITY
+--------------------------------------------------------------------------------
+
+HIGH PRIORITY (must do):
+  [1] Run CEC2017 expeSDMents with 30+ runs at D=30, D=50
+  [2] Restructure results with CEC2017 as pSDMary
+  [3] Create aggregated category table
+  [4] Generate critical difference diagram
+
+MEDIUM PRIORITY (recommended):
+  [5] Move 15-function detailed tables to appendix
+  [6] Add D=100 scalability results
+  [7] Increase classical benchmark runs to 25+
+
+LOW PRIORITY (nice to have):
+  [8] Add one real-world engineering problem
+  [9] Compare with newer algorithms (EBOwithCMAR, LSHADE-cnEpSin)
+
+
+--------------------------------------------------------------------------------
+ESTIMATED TIMELINE
+--------------------------------------------------------------------------------
+
+Week 1-2: Run CEC2017 expeSDMents (computationally intensive)
+Week 3:   Analyze results, compute statistics
+Week 4:   Restructure paper, create new tables/figures
+Week 5:   Revise text, prepare appendix/supplementary
+Week 6:   Final review and submission
+
+
+--------------------------------------------------------------------------------
+TARGET JOURNALS WITH THIS STRATEGY
+--------------------------------------------------------------------------------
+
+Q1 (now feasible):
+  - Swarm and Evolutionary Computation
+  - Applied Soft Computing
+  - Information Sciences
+
+Q2 (high confidence):
+  - Engineering Applications of Artificial Intelligence
+  - Expert Systems with Applications
+  - Soft Computing
+
+================================================================================

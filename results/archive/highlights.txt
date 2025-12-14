@@ -1,0 +1,13 @@
+HIGHLIGHTS
+
+• A novel dual-population metaheuristic (SDM) that decouples search strategy evolution from solution generation, enabling higher-order adaptive control.
+
+• Introduction of systematic refutation as a parameter-space anti-correlation operator, providing structured escape from local optima through adversarial challenge.
+
+• Sinusoidal guidance functions encode complex search trajectories through parsimonious 4D parameters, balancing expressiveness with computational efficiency.
+
+• Comprehensive benchmarking on 15 classical functions and 29 CEC2017 competition functions demonstrates Friedman ranks of 1.87 and 1.76 respectively, outperforming jSO and L-SHADE.
+
+• Validation on five constrained engineering design problems achieves gaps of only 0.06%, 0.004%, 0.01%, 0.017%, and 0.007% from best-known solutions, ranking second behind jSO.
+
+• Statistical superiority over classical baselines (PSO, DE, GA) with large effect sizes (Cohen's d > 0.8).

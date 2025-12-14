@@ -1,0 +1,20 @@
+CEC 2017-Style Benchmark Results (D=50, 51 runs)
+Date: 2025-12-12 21:42:40
+Total runtime: 0.29 minutes
+============================================================
+
+Function                        Best            Mean             Std          Median
+--------------------------------------------------------------------------------
+F1_Sphere                     FAILED
+F2_Elliptic                   FAILED
+F3_BentCigar                  FAILED
+F4_Discus                     FAILED
+F5_Rosenbrock                 FAILED
+F6_Ackley                     FAILED
+F7_Weierstrass                FAILED
+F8_Griewank                   FAILED
+F9_Rastrigin                  FAILED
+F10_Schwefel                  FAILED
+F11_HappyCat                  FAILED
+F12_HGBat                     FAILED
+--------------------------------------------------------------------------------
