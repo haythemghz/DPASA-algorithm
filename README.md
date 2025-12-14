@@ -69,7 +69,7 @@ If you use DPASA in your research, please cite:
 @article{ghazouani2025dpasa,
   title={Dual-Population Adversarial Strategy Adaptation (DPASA): A Meta-Optimization Framework for Global Optimization},
   author={Ghazouani, Haythem},
-  journal={Swarm and Evolutionary Computation},
+  journal={Submitted},
   year={2025}
 }
 ```
