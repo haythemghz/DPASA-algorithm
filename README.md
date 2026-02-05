@@ -66,11 +66,17 @@ python examples/run_engineering.py
 ## Citation
 If you use DPASA in your research, please cite:
 ```bibtex
-@article{ghazouani2025dpasa,
-  title={Dual-Population Adversarial Strategy Adaptation (DPASA): A Meta-Optimization Framework for Global Optimization},
-  author={Ghazouani, Haythem},
-  journal={Submitted},
-  year={2025}
+@article{GHAZOUANI2026102320,
+title = {Dual-population metaheuristic with Adversarial Strategy Adaptation for global optimization},
+journal = {Swarm and Evolutionary Computation},
+volume = {101},
+pages = {102320},
+year = {2026},
+issn = {2210-6502},
+doi = {https://doi.org/10.1016/j.swevo.2026.102320},
+url = {https://www.sciencedirect.com/science/article/pii/S2210650226000404},
+author = {Haythem Ghazouani},
+keywords = {Metaheuristic optimization, Global optimization, Evolutionary computation, Dual-population architecture, Adversarial search, Meta-optimization, Strategy adaptation}
 }
 ```
 
